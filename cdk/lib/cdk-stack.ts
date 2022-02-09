@@ -16,10 +16,13 @@ export class CdkStack extends cdk.Stack {
       CONSTANTS.serverAccessLogBucketName,
       {
         bucketName: CONSTANTS.serverAccessLogBucketName,
+
         // NOTE: Server access log bucket does not support KMS encryption, so S3_MANAGED(Server-side encryption) must be specified.
         encryption: s3.BucketEncryption.S3_MANAGED,
+
         // Server access log bucket does not need to be disclosed externally.
         blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+
         // This lifecycle rule is the following.
         // 1. Garbage files from incomplete multipart uploads will be deleted after 60 days.
         // 2. After 60 days, transit from standard class to IA class.
@@ -63,7 +66,7 @@ export class CdkStack extends cdk.Stack {
       enableKeyRotation: true,
     });
 
-    const bucket = new s3.Bucket(this, CONSTANTS.bucketName, {
+    new s3.Bucket(this, CONSTANTS.bucketName, {
       bucketName: CONSTANTS.bucketName,
 
       // Depending on your company's regulations and security policies,
