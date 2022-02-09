@@ -10,4 +10,8 @@ export const CONSTANTS = {
    * Define key alias to encrypt the main bucket
    */
   bucketKeyAlias: "cdk-sample-key-alias-tadakun8",
+  /**
+   * Define bucket name
+   */
+  bucketName: "cdk-sample-bucket-tadakun8",
 };
