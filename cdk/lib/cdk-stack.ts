@@ -55,7 +55,7 @@ export class CdkStack extends cdk.Stack {
     /**
      * (If you need to have the main bucket encrypted with kms)
      * Define Key to encrypt the main bucket.
-     * The main bucket is used as a log output destination for AWS services such as lambda and cloudwatch.
+     * The main bucket is often used as a log output destination for AWS services such as lambda and cloudwatch.
      * Therefore, you will create it as a CMK so that you can specify those services as principals in the key policy.
      */
     const bucketKey = new kms.Key(this, CONSTANTS.bucketKeyAlias, {
@@ -66,6 +66,9 @@ export class CdkStack extends cdk.Stack {
       enableKeyRotation: true,
     });
 
+    /**
+     * Define main bucket
+     */
     new s3.Bucket(this, CONSTANTS.bucketName, {
       bucketName: CONSTANTS.bucketName,
 
