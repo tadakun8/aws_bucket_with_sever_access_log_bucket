@@ -83,9 +83,9 @@ export class CdkStack extends cdk.Stack {
 
       // This lifecycle rule is the following.
       // 1. Garbage files from incomplete multipart uploads will be deleted after 60 days.
-      // 2. After 60 days, transit from standard class to IA class.
-      // 3. After 90 days, transit from IA class to Glacier Flexible Retrieval.
-      // 4. After 180 days, transit from glacier to deep achive glacier.
+      // 2. After 60 days, move from standard class to IA class.
+      // 3. After 90 days, move from IA class to Glacier Flexible Retrieval.
+      // 4. After 180 days, move from glacier to deep achive glacier.
       // 5. After 360 days, the object will be deleted.
       lifecycleRules: [
         {
